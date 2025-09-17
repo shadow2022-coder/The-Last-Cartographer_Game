@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Last Cartographer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Game Title -->
+        <header>
+            <h1>The Last Cartographer</h1>
+            <p class="subtitle">Navigate the fog, map the world, restore reality</p>
+        </header>
+
+        <!-- Main Game Area -->
+        <div id="game-screen">
+            <!-- Player Stats -->
+            <div id="stats-panel">
+                <div class="stat-group">
+                    <div class="stat">
+                        <span class="stat-label">Level:</span>
+                        <span id="player-level">1</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">XP:</span>
+                        <span id="player-xp">0</span>/<span id="player-xp-max">100</span>
+                    </div>
+                </div>
+                
+                <div class="resource-bars">
+                    <div class="resource">
+                        <label for="health-bar">Health:</label>
+                        <div class="bar-container">
+                            <div id="health-bar" class="bar health-bar"></div>
+                            <span id="health-text">100/100</span>
+                        </div>
+                    </div>
+                    <div class="resource">
+                        <label for="ink-bar">Ink:</label>
+                        <div class="bar-container">
+                            <div id="ink-bar" class="bar ink-bar"></div>
+                            <span id="ink-text">50/50</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-group">
+                    <div class="stat">
+                        <span class="stat-label">Attack:</span>
+                        <span id="player-attack">10</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Defense:</span>
+                        <span id="player-defense">5</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Map -->
+            <div id="game-map-container">
+                <div id="game-map"></div>
+                <div id="controls-hint">
+                    Use WASD or Arrow Keys to move
+                </div>
+            </div>
+
+            <!-- Inventory and Actions -->
+            <div id="action-panel">
+                <div id="inventory">
+                    <h3>Inventory</h3>
+                    <div id="inventory-items">
+                        <div class="item">Health Potion x<span id="health-potions">3</span></div>
+                        <div class="item">Ink Vial x<span id="ink-vials">2</span></div>
+                    </div>
+                </div>
+
+                <div id="actions">
+                    <h3>Actions</h3>
+                    <button id="use-health-potion" onclick="useItem('health')">Use Health Potion</button>
+                    <button id="use-ink-vial" onclick="useItem('ink')">Use Ink Vial</button>
+                    <button id="save-game" onclick="saveGame()">Save Game</button>
+                    <button id="load-game" onclick="loadGame()">Load Game</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Combat Screen (Hidden by default) -->
+        <div id="combat-screen" class="hidden">
+            <div id="combat-container">
+                <div id="enemy-info">
+                    <h3 id="enemy-name">Shadow Wraith</h3>
+                    <div class="resource">
+                        <label>Enemy Health:</label>
+                        <div class="bar-container">
+                            <div id="enemy-health-bar" class="bar enemy-health-bar"></div>
+                            <span id="enemy-health-text">30/30</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="combat-log">
+                    <div class="log-entry">A Shadow Wraith emerges from the fog!</div>
+                </div>
+
+                <div id="combat-actions">
+                    <button id="attack-btn" onclick="combatAction('attack')">Attack</button>
+                    <button id="defend-btn" onclick="combatAction('defend')">Defend</button>
+                    <button id="potion-btn" onclick="combatAction('potion')">Use Potion</button>
+                    <button id="skill-btn" onclick="combatAction('skill')">Use Skill</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Messages -->
+        <div id="message-log">
+            <div class="message">Welcome to The Last Cartographer! Begin your journey...</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
